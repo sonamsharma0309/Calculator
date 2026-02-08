@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator Pro • Flask</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- Extreme animated background layers -->
+  <div class="scene">
+    <div class="sky"></div>
+    <div class="aurora"></div>
+    <div class="stars"></div>
+    <div class="grain"></div>
+
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+  </div>
+
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        <div>
+          <h1>Calculator <b>Pro</b></h1>
+          <p>Flask API • SQLite History • Premium UI</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="modeBtn" class="chip" title="Switch Mode">Mode: <b id="modeLabel">Standard</b></button>
+        <button id="toggleTheme" class="icon-btn" title="Toggle Theme"><span class="icon">🌙</span></button>
+        <button id="clearHistory" class="icon-btn" title="Clear History"><span class="icon">🗑️</span></button>
+      </div>
+    </header>
+
+    <section class="kpis">
+      <div class="kpi kpi-3d">
+        <div class="kpi-title">Total Calculations</div>
+        <div class="kpi-value" id="kpiTotal">0</div>
+      </div>
+      <div class="kpi kpi-3d">
+        <div class="kpi-title">Last Activity</div>
+        <div class="kpi-value small" id="kpiLast">—</div>
+      </div>
+      <div class="kpi kpi-3d glow">
+        <div class="kpi-title">Status</div>
+        <div class="kpi-value small" id="kpiStatus">Ready</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <section class="calc calc-3d" id="tiltCard">
+        <div class="glare" id="glare"></div>
+
+        <div class="screen" aria-live="polite">
+          <div id="expression" class="expression"></div>
+          <div class="row">
+            <div id="result" class="result">0</div>
+            <div id="status" class="status"></div>
+          </div>
+        </div>
+
+        <div id="sciKeys" class="sci">
+          <button class="s" data-fn="sin(">sin</button>
+          <button class="s" data-fn="cos(">cos</button>
+          <button class="s" data-fn="tan(">tan</button>
+          <button class="s" data-fn="sqrt(">√</button>
+
+          <button class="s" data-fn="log(">log</button>
+          <button class="s" data-fn="ln(">ln</button>
+          <button class="s" data-const="pi">π</button>
+          <button class="s" data-const="e">e</button>
+
+          <button class="s" data-value="(">(</button>
+          <button class="s" data-value=")">)</button>
+          <button class="s" data-value="**">xʸ</button>
+          <button class="s" data-fn="abs(">abs</button>
+        </div>
+
+        <div class="keys">
+          <button class="k k-fn" data-action="ac">AC</button>
+          <button class="k k-fn" data-action="del">⌫</button>
+          <button class="k k-fn" data-value="%">%</button>
+          <button class="k k-op" data-value="/">÷</button>
+
+          <button class="k" data-value="7">7</button>
+          <button class="k" data-value="8">8</button>
+          <button class="k" data-value="9">9</button>
+          <button class="k k-op" data-value="*">×</button>
+
+          <button class="k" data-value="4">4</button>
+          <button class="k" data-value="5">5</button>
+          <button class="k" data-value="6">6</button>
+          <button class="k k-op" data-value="-">−</button>
+
+          <button class="k" data-value="1">1</button>
+          <button class="k" data-value="2">2</button>
+          <button class="k" data-value="3">3</button>
+          <button class="k k-op" data-value="+">+</button>
+
+          <button class="k k-wide" data-value="0">0</button>
+          <button class="k" data-value=".">.</button>
+          <button class="k k-eq" data-action="eq">=</button>
+        </div>
+
+        <footer class="hint">
+          Refresh pe background totally different • Shift+T palette • Shift+L lock
+        </footer>
+      </section>
+
+      <aside class="history history-3d">
+        <div class="history-head">
+          <h2>History</h2>
+          <span id="historyCount" class="pill">0</span>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
